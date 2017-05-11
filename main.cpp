@@ -15,10 +15,17 @@ int main(void) {
 	                                        // load cells.
 	// Main loop 
 	while(loop) {
+		// Read and store load cell value in
+		// load private member
+		
 		loadCell.update_load();
+		// Return load private data
 		load = loadCell.get_load();
+		
+		// Print to console
 		printf("%.3f Kg\n\r", load);
 		usleep(100000);
 	}
+	// Close fd for reading/writing
 	loadCell.close_serial();
 }

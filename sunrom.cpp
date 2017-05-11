@@ -114,7 +114,7 @@ void SUNROM::send_serial(char *data, unsigned int len) {
 	write(fd, data, len);
 }
 
-bool SUNROM::receive_serial() {
+bool SUNROM::receive_serial(void) {
 	int ret;
 	static char rxBuffer[SERIAL_RX_BUFFER_SIZE];
 	// Read characters from Serial and put them in a buffer

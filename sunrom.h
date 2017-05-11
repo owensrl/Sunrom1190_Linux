@@ -27,24 +27,23 @@
 class SUNROM
 {
 public:
-	// Static Member Functions
-	void init_serial(char* modemDevice);
-	void close_serial(void);
 	// Constructor
 	SUNROM(char* serialPort, float scaling); 
 	
 	// Destructor
 	~SUNROM();
 	
-	// Public members
-	void send_serial(char *data, unsigned int len);
-	void update_load();
-	float get_load();
-	
+	// Public functions
+	void init_serial(char* modemDevice); // Initialize serial interface.
+	void close_serial(void); // Close fd
+	void send_serial(char *data, unsigned int len); // Send data buffer over serial
+	void update_load(void); // Read and store load cell value in load private data
+	float get_load(void); // Return load private data
 
 private:
 	// Private functions
-	bool receive_serial();
+	bool receive_serial(void);
+	
 	// Private data
 	int fd; // serial file descriptor
 	float load; // current load value
