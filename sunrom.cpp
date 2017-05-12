@@ -71,7 +71,7 @@ void SUNROM::init_serial(char* modemDevice) {
     /*  Raw output  */
     newtio.c_oflag = 0;
     
-    newtio.c_cc[VTIME] = 0;
+    newtio.c_cc[VTIME] = 1;
     newtio.c_cc[VMIN]  = 0;
 
     /* ICANON  : enable canonical input
@@ -81,7 +81,7 @@ void SUNROM::init_serial(char* modemDevice) {
     // Load the pin configuration
 	/* Open modem device for reading and writing and not as controlling tty
     because we don't want to get killed if linenoise sends CTRL-C. */
-    fd = open(modemDevice, O_RDWR | O_NOCTTY);
+    fd = open(modemDevice, O_RDWR | O_NOCTTY| O_NONBLOCK);
     if (fd < 0) { perror(modemDevice); exit(-1); }
     
     /* now clean the modem line and activate the settings for the port */

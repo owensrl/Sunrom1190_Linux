@@ -24,7 +24,7 @@ int main(void) {
 		
 		// Print to console
 		printf("%.3f Kg\n\r", load);
-		usleep(100000);
+		usleep(100);
 	}
 	// Close fd for reading/writing
 	loadCell.close_serial();
